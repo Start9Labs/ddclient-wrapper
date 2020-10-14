@@ -4,6 +4,7 @@
 
 - [docker](https://docs.docker.com/get-docker)
 - [docker-buildx](https://docs.docker.com/buildx/working-with-buildx/)
+- [rust-musl-cross](https://github.com/Start9Labs/rust-musl-cross)
 - [yq](https://mikefarah.gitbook.io/yq)
 - [appmgr](https://github.com/Start9Labs/appmgr)
 
