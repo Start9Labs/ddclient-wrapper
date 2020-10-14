@@ -1,0 +1,312 @@
+dns:
+  type: list
+  subtype: union
+  name: DNS Provider Information
+  description: Information for your DNS provider(s).
+  default: []
+  range: '[0,*)'
+  spec:
+    type: union
+    tag: 
+      id: protocol
+      name: Protocol
+      variantNames: {}
+    displayAs: '{{#if hostnames}}{{hostnames}}{{else}}{{host-id}}{{/if}}@{{protocol}}{{#if server}}://{{server}}{{/if}}'
+    default: dyndns2
+    variants:
+      dyndns2:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: members.dyndns.org
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+        wildcard:
+          type: boolean
+          name: DNS Wildcard
+          description: Add a DNS wildcard CNAME record that points to your host.
+          default: false
+        static:
+          type: boolean
+          name: Static IP
+          description: Turn this on if your Embassy is in a house with a static IP.
+          default: false
+        custom:
+          type: boolean
+          name: Custom TLD
+          description: Turn this on if you have a custom Top Level Domain name.
+          default: false
+      dyndns1:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: members.dyndns.org
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+        wildcard:
+          type: boolean
+          name: DNS Wildcard
+          description: Add a DNS wildcard CNAME record that points to your host.
+          default: false
+      easydns:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: members.easydns.com
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+        wildcard:
+          type: boolean
+          name: DNS Wildcard
+          description: Add a DNS wildcard CNAME record that points to your host.
+          default: false
+      namecheap:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: dynamicdns.park-your-domain.com
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+      zoneedit1:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: www.zoneedit.com
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+      changeip:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: nic.changeip.com
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+      googledomains:
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The fully qualified domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+      duckdns:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: www.duckdns.org
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        hostnames:
+          type: list
+          subtype: string
+          name: Host Name
+          description: The domain name of the host registered with the provider.
+          default: []
+          range: '[0,*)'
+          spec:
+            type: string
+            pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+            patternDescription: Must be a valid domain name.
+      dslreports:
+        server:
+          type: string
+          nullable: false
+          name: Server
+          description: The fully qualified domain name of the DNS provider to connect to.
+          default: www.dslreports.com
+          pattern: '(?=^.{4,253}$)(^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+[a-zA-Z]{2,63}$)'
+          patternDescription: Must be a valid domain name.
+        login:
+          type: string
+          nullable: false
+          name: User Name
+          description: The username for your account with the DNS provider.
+          default: ~
+        password:
+          type: string
+          nullable: false
+          name: Password
+          description: The password for your account with the DNS provider.
+          default: ~
+        host-id:
+          type: number
+          nullable: false
+          name: Host ID
+          description: The unique ID of the host registered with the provider.
+          default: ~
+          range: '[0,*)'
+          integral: true

@@ -1,0 +1,16 @@
+compat: v0
+id: ddclient
+version: "3.9.1"
+title: Dynamic DNS Client
+description:
+  short: "A Dynamic DNS Client"
+  long: "Automatically configures your DNS whenever your IP address changes."
+release-notes: https://github.com/ddclient/ddclient/releases/tag/v3.9.1
+ports: []
+image:
+  type: tar
+mount: /root
+has-instructions: true
+os-version-required: ">=0.2.5"
+os-version-recommended: ">=0.2.5"
+assets: []
